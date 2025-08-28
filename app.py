@@ -4,12 +4,12 @@ import matplotlib.pyplot as plt
 from datetime import datetime
 from format import format_csv
 
-CSV_FILE = "energie.csv"
+CSV_FILE = "energie.csv" #fichier de traitement par défaut pour l'application
 PRIX_KWH = 0.15  # € par kWh
 
 st.set_page_config(page_title="Smart Grid - Énergie", page_icon="⚡", layout="wide")
 
-# --- Charger les données dans st.session_state pour permettre le rafraîchissement
+# --- Chargement des données dans st.session_state pour permettre le rafraîchissement
 def load_data(path: str) -> pd.DataFrame:
     df = pd.read_csv(path, encoding="utf-8")
     df["Datetime"] = pd.to_datetime(df["Date"] + " " + df["Heure"])
@@ -17,6 +17,10 @@ def load_data(path: str) -> pd.DataFrame:
 
 if "data" not in st.session_state:
     st.session_state.data = load_data(CSV_FILE)
+    
+
+#Titre de l'application
+st.title("SMART GRID CHECKER")
 
 # --- Onglets internes
 tab1, tab2, tab3, tab4 = st.tabs([
@@ -30,7 +34,7 @@ tab1, tab2, tab3, tab4 = st.tabs([
 # Onglet 1 : Dashboard
 # -----------------------------
 with tab1:
-    st.title("⚡ Dashboard Smart Grid — Consommation & Production")
+    st.header("⚡ Dashboard Smart Grid — Consommation & Production")
 
     # Filtre par région
     st.sidebar.header("Filtres")
@@ -109,7 +113,9 @@ with tab2:
 # Onglet 3 : Import CSV
 # -----------------------------
 with tab3:
-    st.header("📥 Importer un fichier CSV")
+    st.header("📥 Importer des données avec un fichier CSV")
+    
+    st.text("Le fichier doit avoir 6 colonnes (Date, Heure, Région, Consommation (kWh), Production (kWh), Coût (€))")
 
     uploaded_file = st.file_uploader("Choisir un fichier CSV", type="csv")
     if uploaded_file is not None:
