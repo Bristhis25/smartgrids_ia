@@ -65,6 +65,7 @@ streamlit run app.py
 ```
 ## Organisation du projet
 
+```bash
 smartgrids_ia/
 │
 ├── app.py             # Application principale Streamlit
@@ -73,6 +74,7 @@ smartgrids_ia/
 ├── energie_simulee.csv # Exemple CSV simulé pour tests
 ├── requirements.txt   # Dépendances Python
 └── README.md          # Ce fichier
+```
 
 ### Dépendances
 
