@@ -5,7 +5,7 @@ from datetime import datetime
 
 # --- Constantes ---
 CSV_FILE = "smart_meter_data.csv"
-PRIX_KWH = 0.15  # € par kWh
+PRIX_KWH = 0.15  # € par kWh pour le calcul du coût
 
 # --- Configuration page ---
 st.set_page_config(page_title="Smart Grid - Énergie", page_icon="⚡", layout="wide")
@@ -27,10 +27,10 @@ if "data" not in st.session_state:
     st.session_state.data = load_data(CSV_FILE)
 
 # --- Titre ---
-st.title("SMART GRID CHECKER")
+st.title("SMART GRID ABNORMALY CHECKER")
 
 # --- Onglets ---
-tab1, tab2, tab3, tab4 = st.tabs([
+tab1, tab2, tab3 = st.tabs([
     "📊 Dashboard",
     "➕ Ajouter une donnée",
     "📥 Import CSV",
@@ -41,9 +41,9 @@ tab1, tab2, tab3, tab4 = st.tabs([
 # Onglet 1 : Dashboard
 # -----------------------------
 with tab1:
-    st.header("📊 Dashboard Smart Grid — Consommation & Moyenne Passée")
+    st.header("📊 Tableau de bord Smart Grid — Consommation & Moyenne Passée")
     st.markdown("""
-    Ce dashboard présente l'évolution de la consommation d'électricité et de la moyenne passée sur la période enregistrée.
+    Ce tableau de bord présente l'évolution de la consommation d'électricité et de la moyenne passée sur la période enregistrée.
     - **Timestamp** : Date et heure de la mesure.
     - **Electricity_Consumed** : Consommation d'électricité en kWh.
     - **Avg_Past_Consumption** : Consommation moyenne passée en kWh.
@@ -95,7 +95,7 @@ with tab1:
 # Onglet 2 : Ajouter une donnée manuellement
 # -----------------------------
 with tab2:
-    st.header("➕ Ajouter une nouvelle donnée")
+    st.header("Ajouter une nouvelle donnée")
     with st.form("add_data_form"):
         date = st.date_input("Date", value=datetime.today())
         time = st.time_input("Heure", value=datetime.now().time())
