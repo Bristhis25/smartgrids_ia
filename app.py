@@ -30,7 +30,7 @@ if "data" not in st.session_state:
 st.title("SMART GRID ABNORMALY CHECKER")
 
 # --- Onglets ---
-tab1, tab2, tab3 = st.tabs([
+tab1, tab2, tab3, tab4 = st.tabs([
     "📊 Dashboard",
     "➕ Ajouter une donnée",
     "📥 Import CSV",
