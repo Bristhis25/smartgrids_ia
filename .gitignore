@@ -17,7 +17,7 @@ venv.bak/
 .streamlit/
 
 # Fichiers de données locaux sensibles à ignorer
-users.json       # <-- on ignore ce fichier pour protéger les mots de passe
+users.json       #
 
 # Logs
 *.log
