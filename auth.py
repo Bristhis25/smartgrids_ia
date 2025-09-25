@@ -11,7 +11,7 @@ if not os.path.exists(USER_FILE):
     with open(USER_FILE, "w") as f:
         json.dump({}, f)
 
-# --- Fonctions utilitaires ---
+# --- Fonctions utilitaires de sécurité---
 def hash_password(password):
     """Hash SHA-256 du mot de passe"""
     return hashlib.sha256(password.encode()).hexdigest()
